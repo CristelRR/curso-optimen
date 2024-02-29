@@ -14,33 +14,50 @@ function Home() {
         <div>
             <Navigate />
             <Grid container spacing={2}>
-            {
-                data.Employees.map(employes => (
-                    <Grid item xs={6} md={8}>
-                        <Card sx={{ maxWidth: 300 }}>
-                            <CardActionArea>
-                                {/* <CardMedia
+                {
+                    data.Employees.map(employes => (
+                        <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
+                            <Card sx={{ maxWidth: 300 }}>
+                                <CardActionArea>
+                                    {/* <CardMedia
                         component="img"
                         height="140"
                         image="https://t2.ea.ltmcdn.com/es/posts/2/6/6/alimentos_peligrosos_para_iguanas_bebes_20662_3_600.jpg"
                         alt="green iguana"
                     /> */}
-                                <Stack direction="row" spacing={2} sx={{ display: 'flex', justifyContent: 'center', pt:2 }}>
-                                    <Avatar {...stringAvatar(employes.Name)} />
-                                </Stack>
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        {employes.Name}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {employes.Spot}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    </Grid>
-                ))
-            }
+                                    <Stack direction="row" spacing={2} sx={{ display: 'flex', justifyContent: 'center', pt: 2 }}>
+                                        <Avatar {...stringAvatar(employes.Name)} />
+                                    </Stack>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h4" component="div">
+                                            {employes.Name}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            Spot: {employes.Spot}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            Contract: {employes.Contract.Name}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {employes.Skills.map(skill => (
+                                                <Typography gutterButtom variant='body1' component="div">
+                                                    Skill: {skill}
+                                                </Typography>
+                                            ))}
+                                        </Typography>
+                                        <Typography>
+                                            {employes.Documents.map(document => (
+                                                <Typography variant="body2" color="text.secondary">
+                                                    {document.Name}, Expiration: {document.Expiration}
+                                                </Typography>
+                                            ))}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                    ))
+                }
             </Grid>
         </div>
     )
